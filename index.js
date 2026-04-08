@@ -3,9 +3,16 @@
 // Function to change the background color when a button is clicked
 function changeBackgroundColor() {
   // Implement the function to change background color
-  document.body.style.backgroundColor = 'rgb(${r}, ${g}, ${b})'
-}
+ const r = Math.floor(Math.random() * 256)
+  const g = Math.floor(Math.random() * 256)
+  const b = Math.floor(Math.random() * 256)
 
+  const color = `rgb(${r}, ${g}, ${b})`
+
+  document.body.style.backgroundColor = color
+
+  return color
+}
 // Function to reset the background color when the body is double-clicked
 function resetBackgroundColor() {
   // Implement the function to reset background color
