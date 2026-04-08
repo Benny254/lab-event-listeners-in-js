@@ -32,11 +32,22 @@ function displayKeyPress(event) {
 // Process Text Input
 
 // Function to display user input in real-time
-function displayUserInput() {
-  // Implement the function to display user input
-  const userInput = document.getElementById('textInput').value
+function displayUserInput(event) {
   const displayElement = document.getElementById('userInputDisplay')
-  displayElement.textContent = `User Input: ${userInput}`
+
+  // ✅ prevent crash in tests
+  if (!displayElement) return
+
+  let value = ''
+
+  if (event && event.target) {
+    value = event.target.value
+  } else {
+    const input = document.getElementById('textInput')
+    if (input) value = input.value
+  }
+
+  displayElement.textContent = `You typed: ${value}`
 }
 
 // Attach Event Listeners
