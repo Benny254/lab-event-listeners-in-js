@@ -34,22 +34,14 @@ function displayKeyPress(event) {
 // Function to display user input in real-time
 function displayUserInput(event) {
   const displayElement = document.getElementById('userInputDisplay')
+  const inputElement = document.getElementById('textInput')
 
-  // ✅ prevent crash in tests
-  if (!displayElement) return
+  if (!displayElement || !inputElement) return
 
-  let value = ''
-
-  if (event && event.target) {
-    value = event.target.value
-  } else {
-    const input = document.getElementById('textInput')
-    if (input) value = input.value
-  }
+  const value = event?.target?.value || inputElement.value
 
   displayElement.textContent = `You typed: ${value}`
 }
-
 // Attach Event Listeners
 function setupEventListeners() {
 // Attach event listener to change background color when the button is clicked
